@@ -27,10 +27,11 @@ function siUnit(BigNumber) {
       return [ based, values[index], unit ].join('');
     },
     parse: function siUnitParse(str, unit, multi) {
+      str = '' + str; // May be a number
       unit  = unit || "";
       multi = multi || 1000;
 
-      ref = str.match(/(\d+\.?\d+)([a-zA-Z])?([a-zA-Z]+)?/);
+      ref = str.match(/(\d+\.?\d*?)([a-zA-Z])?([a-zA-Z]+)?/);
 
       if ( ref === null ) {
         return NaN;

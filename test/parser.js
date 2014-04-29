@@ -7,6 +7,10 @@ describe('siunit parser', function() {
     expect(siUnit.toString(0)).to.equal("0");
   });
 
+  it('will not break when plain digits are passed in!', function() {
+    expect(siUnit.parse(5).toFixed(3)).to.equal(BigNumber(5).toFixed(3));
+  });
+
   it('returns NaN on malformed input', function() {
     expect(siUnit.parse("woof")).to.deep.equal(NaN);
   });
